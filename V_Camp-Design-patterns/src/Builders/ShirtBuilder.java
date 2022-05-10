@@ -1,10 +1,10 @@
 package Builders;
 
 import Interfaces.IProductBuilder;
-import Products.Camisa;
+import Products.Shirt;
 import abstracts.Products;
 
-public class CamisaBuilder implements IProductBuilder {
+public class ShirtBuilder implements IProductBuilder {
 
 	private int SKU;
 	private double Price;
@@ -14,43 +14,43 @@ public class CamisaBuilder implements IProductBuilder {
 	
 	
 	@Override
-	public CamisaBuilder withPrice(double price) {
+	public ShirtBuilder withPrice(double price) {
 		this.Price = price;
 		return this;
 	}
 
 	@Override
-	public CamisaBuilder withWeight(double weight) {
+	public ShirtBuilder withWeight(double weight) {
 		this.Weight = weight;
 		return this;
 	}
 
 	@Override
-	public CamisaBuilder withSKU() {
+	public ShirtBuilder withSKU() {
 		this.SKU = Products.ID;
 		Products.ID ++;
 		return this;
 	}
 		
-	public CamisaBuilder withBrand(String brand) {
+	public ShirtBuilder withBrand(String brand) {
 		this.Brand = brand;
 		return this;
 	}	
 	
-	public CamisaBuilder withColor(String color) {
+	public ShirtBuilder withColor(String color) {
 		this.Color = color;
 		return this;
 	}	
 
 	@Override
-	public Camisa build() {	 
+	public Shirt build() {	 
 		
-		return new Camisa(SKU, Price, Weight,Color, Brand);
+		return new Shirt(SKU, Price, Weight,Color, Brand);
 	}
 
 	@Override
-	public Camisa getProduct() {
-		return null;
+	public ShirtBuilder getProduct() {
+		return this;
 	}
 
 }

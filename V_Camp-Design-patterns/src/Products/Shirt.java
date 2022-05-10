@@ -2,15 +2,13 @@ package Products;
 
 import abstracts.Products;
 
-public class Camisa extends Products {
-	
-	
+public class Shirt extends Products {
 	
 	private String Color;
 	private String Brand;
 	
 	
-	public Camisa(int sku, double price, double weight, String color,String brand) {
+	public Shirt(int sku, double price, double weight, String color,String brand) {
 		super();
 		SKU = sku;
 		Price = price;

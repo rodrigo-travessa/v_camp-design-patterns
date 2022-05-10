@@ -13,5 +13,5 @@ public interface IProductBuilder {
 	
 	Products build();
 	
-	Products getProduct();
+	IProductBuilder getProduct();
 }

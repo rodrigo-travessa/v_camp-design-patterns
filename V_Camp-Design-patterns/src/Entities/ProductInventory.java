@@ -18,6 +18,10 @@ public class ProductInventory {
 	public static ProductInventory getInstance() {
 		return productInventory;
 	}
+	
+	public void addProduct(Products product) {
+		Inventory.add(product);
+	}
 
 	public int getProductQuantity(Products product) {
 		
