@@ -4,14 +4,14 @@ import abstracts.Products;
 
 public interface IProductBuilder {
 	
-	IProductBuilder withPrice(double price);
+	IProductBuilder setPrice(double price);
 	
-	IProductBuilder withWeight(double weight);	
+	IProductBuilder setWeight(double weight);	
 
-	IProductBuilder withSKU();	
+	IProductBuilder setSKU();	
 
 	
 	Products build();
 	
-	IProductBuilder getProduct();
+	Products getProduct();
 }

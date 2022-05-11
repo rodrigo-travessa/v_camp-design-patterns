@@ -4,20 +4,34 @@ public abstract class Products {
 	
 	public static int ID = 1;
 	
-	
-	protected int SKU;
-	protected double Price;
-	protected double Weight;
-	
+	public int SKU;
+	public int StockQuantity;
+	public int ReservedQuantity;
+	public double Price;
+	public double Weight;
 	
 	public Products() {}
 	
-	public Products(double price, double weight, int sku) {
+	public Products(int sku, double price, double weight, int stockQuantity, int reservedQuantity ) {
 		this.Price = price;
 		this.Weight = weight;
 		this.SKU = sku;
+		this.StockQuantity = stockQuantity;
+		this.ReservedQuantity = reservedQuantity;
 	}
 	
+	public static int getID() {
+		return ID;
+	}
+
+	public int getStockQuantity() {
+		return StockQuantity;
+	}
+
+	public int getReservedQuantity() {
+		return ReservedQuantity;
+	}
+
 	public int getSKU() {
 		return SKU;
 	}

@@ -3,12 +3,12 @@ package Products;
 import abstracts.Products;
 
 public class Book extends Products {
-	
+
 	private String Author;
 	private int NumberOfPages;
 
-	
-	public Book(int sku, double price, double weight, String author,int numberOfPages) {
+
+	public Book(int sku, double price, double weight, int StockQuantity, int ReservedQuantity, String author,int numberOfPages) {
 		super();
 		SKU = sku;
 		Price = price;
@@ -26,4 +26,16 @@ public class Book extends Products {
 	public int getNumberOfPages() {
 		return NumberOfPages;
 	}
+	public String toString() {
+
+		return	
+
+				"Author:" + this.getAuthor()
+				+" "
+				+"Pages:" + this.getNumberOfPages()
+				+" "
+				+"Price:"+ Double.toString(this.getPrice())
+				+" "
+				+"Weight:"+Double.toString(this.getWeight()) +"KGs"
+				;}
 }
