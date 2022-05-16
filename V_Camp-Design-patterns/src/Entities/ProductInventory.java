@@ -1,11 +1,9 @@
 package Entities;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Stream;
 
-import Products.Book;
 import abstracts.Products;
 
 public class ProductInventory {
@@ -35,6 +33,12 @@ public class ProductInventory {
 		return stream.toList().get(0).StockQuantity;
 		}
 	
+	public int getProductQuantityReservedBySKU(int sku) {
+
+		Stream<Products> stream = Inventory.stream().filter(prod -> prod.SKU == sku);
+		return stream.toList().get(0).ReservedQuantity;
+	}
+	
 	public void removeProductFromStock(int sku, int quantity) {
 		
 		if (Inventory.stream().filter(prod -> prod.SKU == sku).toList().get(0).StockQuantity >= quantity) {
@@ -44,6 +48,30 @@ public class ProductInventory {
 			throw new IndexOutOfBoundsException();
 		}
 		
+	}
+	
+	public void addProductsToStock(int sku, int quantity) {
+		
+		Stream<Products> stream = Inventory.stream().filter(prod -> prod.SKU == sku);
+		stream.toList().get(0).StockQuantity += quantity;
+	}
+	
+	public void addProductsToReserve(int sku, int quantity) {
+		
+		Stream<Products> stream = Inventory.stream().filter(prod -> prod.SKU == sku);
+		stream.toList().get(0).ReservedQuantity += quantity;
+		
+	}
+	
+	public void removeProductFromReserved(int sku, int quantity) {
+
+		if (Inventory.stream().filter(prod -> prod.SKU == sku).toList().get(0).ReservedQuantity >= quantity) {
+			Stream<Products> stream = Inventory.stream().filter(prod -> prod.SKU == sku);
+			stream.toList().get(0).ReservedQuantity -= quantity;
+		} else {
+			throw new IndexOutOfBoundsException();
+		}
+
 	}
 
 }

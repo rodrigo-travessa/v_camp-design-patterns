@@ -3,7 +3,8 @@ package Shipping;
 public class RoadShipping implements IShippingInterface {
 
 	@Override
-	public void Transport() {
+	public ShippingVehicle DefineTransport() {
+		return new Truck();
 
 	}
 
