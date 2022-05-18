@@ -65,7 +65,7 @@ public class BookBuilder implements IProductBuilder {
 		return book;
 	}
 
-	public Products getProduct() {
+	public Book getProduct() {
 		return book;
 	}
 

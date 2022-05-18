@@ -22,8 +22,20 @@ public class Book extends Products {
 	public String toString() {
 
 		return	"Book:" +" Author:" + this.getAuthor()
-						+" Pages:" + this.getNumberOfPages()
-						+" Price:"+ Double.toString(this.getPrice())
-						+" Weight:"+Double.toString(this.getWeight()) +"KGs"
+						+", Pages:" + this.getNumberOfPages()
+						+", Price:"+ Double.toString(this.getPrice())
+						+", Weight:"+Double.toString(this.getWeight()) +"KGs;"
 				;}
+	
+	public Book clone() {
+		Book book = new Book();
+		book.SKU = this.getSKU();
+		book.Price = this.getPrice();
+		book.Weight = this.getWeight();
+		book.StockQuantity = this.getStockQuantity();
+		book.ReservedQuantity = this.getReservedQuantity();
+		book.NumberOfPages = this.getNumberOfPages();
+		book.Author = this.getAuthor();
+		return book;
+	}
 }

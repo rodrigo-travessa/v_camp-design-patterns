@@ -65,7 +65,7 @@ public class MonitorBuilder  implements IProductBuilder {
 		return monitor;
 	}
 
-	public Products getProduct() {
+	public Monitor getProduct() {
 		return monitor;
 	}
 

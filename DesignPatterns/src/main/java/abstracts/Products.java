@@ -39,5 +39,10 @@ public abstract class Products {
 	public int getReservedQuantity() {
 		return ReservedQuantity;
 	}
+	
+	public Products clone() {
+		return null;
+		
+	}
 
 }

@@ -19,9 +19,22 @@ public class Boat extends Products {
 	public String toString() {
 
 		return	"Boat:" +" EnginePower:" + this.getEnginePower() +"HP"
-						+" SizeInFeet:" + this.getSizeInFeet()
-						+" Price:"+ Double.toString(this.getPrice())
-						+" Weight:"+Double.toString(this.getWeight()) +"KGs"
+						+", SizeInFeet:" + this.getSizeInFeet()
+						+", Price:"+ Double.toString(this.getPrice())
+						+", Weight:"+Double.toString(this.getWeight()) +"KGs;"
 				;}
+	
+	
+	public Boat clone() {
+		Boat boat = new Boat();
+		boat.SKU = this.getSKU();
+		boat.Price = this.getPrice();
+		boat.Weight = this.getWeight();
+		boat.StockQuantity = this.getStockQuantity();
+		boat.ReservedQuantity = this.getReservedQuantity();
+		boat.EnginePower = this.getEnginePower();
+		boat.SizeInFeet = this.getSizeInFeet();
+		return boat;
+	}
 
 }

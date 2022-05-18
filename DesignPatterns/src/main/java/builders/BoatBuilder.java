@@ -65,7 +65,7 @@ public class BoatBuilder implements IProductBuilder {
 		return boat;
 	}
 
-	public Products getProduct() {
+	public Boat getProduct() {
 		return boat;
 	}
 	
