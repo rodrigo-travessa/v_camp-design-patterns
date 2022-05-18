@@ -20,7 +20,7 @@ public class ProductInventory {
 		return productInventory;
 	}
 
-	private Products getProduct(int sku) {
+	public Products getProduct(int sku) {
 		return Inventory.stream().filter(prod -> prod.SKU == sku).toList().get(0);
 	}
 	

@@ -8,7 +8,9 @@ import builders.BookBuilder;
 import builders.MonitorBuilder;
 import builders.ShirtBuilder;
 import entities.Catalog;
+import entities.Order;
 import entities.ProductInventory;
+import enums.OrderStatus;
 import products.Boat;
 import products.Book;
 import products.Monitor;
@@ -53,6 +55,22 @@ public class Client {
 		for (Products prod : ProductInventory.getInstance().Inventory ) {
 			System.out.println(prod.toString());
 		}
+		
+		
+		Order order = new Order();
+		
+		order.orderStatus = OrderStatus.Paid;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 

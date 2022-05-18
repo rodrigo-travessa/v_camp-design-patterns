@@ -3,10 +3,6 @@ package entities;
 import java.util.ArrayList;
 import java.util.List;
 
-import Shipping.AirShipping;
-import Shipping.IShippingInterface;
-import Shipping.RoadShipping;
-import Shipping.ShippingVehicle;
 import abstracts.Products;
 
 public class Cart  {
@@ -14,44 +10,47 @@ public class Cart  {
 	
 	public double TotalPrice = 0;
 	public double TotalWeight = 0;
-	public ShippingVehicle TransportMethod;
+	
+	
 	
 	ProductInventory StoreInventory = ProductInventory.getInstance();
+	
 	List<Products> ProductsInCart = new ArrayList<Products>();
 	
-	public void addItems(int sku, int quantity) {
-		
-		// Should this remove or reserve items from stock?
+	
+	public void addItems(int sku, int quantity) throws Exception {
 		
 		StoreInventory.removeProductFromStock(sku, quantity);
 		StoreInventory.addProductsToReserve(sku, quantity);
-		ProductsInCart.add(StoreInventory.Inventory.stream().filter(prod -> prod.SKU == sku).toList().get(0));
-		ProductsInCart.stream().filter(prod -> prod.SKU == sku).toList().get(0).StockQuantity = quantity;
+		
+		ProductsInCart.add(StoreInventory.getProduct(sku).clone());
+		getProductData(sku).CartQuantity = quantity;
 		
 	}
 	
-	public void removeItems(int sku, int quantity) {
+	
+	public void removeItems(int sku, int quantity) throws Exception {
 		
-		int currentCartQuantity = ProductsInCart.stream().filter(prod -> prod.SKU == sku).toList().get(0).StockQuantity;
-		
-		if (currentCartQuantity >= quantity) {
+		if (getProductData(sku).CartQuantity >= quantity) {
 			StoreInventory.addProductsToStock(sku, quantity);
 		}	else {
 			
-			throw new UnsupportedOperationException("There isn't enough items in the cart");
+			throw new Exception("There isn't enough items in the cart");
 		}
 			
 	}
 	
 	
 	public double getWeight() {
-		ProductsInCart.forEach(x -> TotalWeight += (x.getWeight() * x.StockQuantity));
+		TotalWeight = 0;
+		ProductsInCart.forEach(productInCart -> TotalWeight += (productInCart.getWeight() * productInCart.StockQuantity));
 		return TotalWeight;
 	}
 	
 	public double getPrice() {
-		ProductsInCart.forEach(x -> TotalPrice += (x.getPrice() * x.StockQuantity));
-		return TotalWeight;		
+		TotalPrice = 0;
+		ProductsInCart.forEach(productInCart -> TotalPrice += (productInCart.getPrice() * productInCart.StockQuantity));
+		return TotalPrice;		
 	}
 
 	public List<Products> getProducts() {
@@ -59,22 +58,11 @@ public class Cart  {
 		return ProductsInCart ;
 	}
 
-
-	public void setShipping() {
-		
-		IShippingInterface x;
-
-		if (this.getWeight() >= 10) {
-			x = new RoadShipping();
-
-		} else {
-			x = new AirShipping();
-
-		}
-
-		TransportMethod = x.DefineTransport();
-
+	public Products getProductData(int sku) {
+		return ProductsInCart.stream().filter(prod -> prod.SKU == sku).toList().get(0);
 	}
+
+	
 
 }
 
