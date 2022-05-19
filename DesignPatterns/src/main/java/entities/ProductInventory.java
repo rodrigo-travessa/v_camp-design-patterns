@@ -41,15 +41,19 @@ public class ProductInventory {
 		
 	}
 
-	public void removeProductFromStock(int sku, int quantity) throws Exception {
+	public boolean removeProductFromStock(int sku, int quantity) throws Exception {
 
 		if (getProduct(sku).StockQuantity >= quantity) {
 			
 			getProduct(sku).StockQuantity -= quantity;	
-			
+			return true;
 		} else {
-			
-			throw new Exception("Not enought of this product in stock");
+			System.out.println("You tried to withdraw "
+					+ quantity
+					+ " of this product from stock, but we only have "
+					+ getProductQuantityBySKU(sku)
+					+ " of them.");
+			return false;
 		}
 
 	}

@@ -64,15 +64,11 @@ public class Client {
 		
 		order.cart.addItems(1, 4);
 		order.cart.removeItems(1, 2);
-		order.cart.addItems(3, 4);
+		order.cart.addItems(3, 14);
 		order.updateShipping();
 		System.out.println(order.shippingPrice +" "+ order.totalPrice + order.shipping.description());
 		
-		order.toPaid();
-		
-		order.toShipped();
-		
-		order.toCompleted();
+		order.cart.removeItems(1, 5);
 		
 		System.out.println("End");
 		

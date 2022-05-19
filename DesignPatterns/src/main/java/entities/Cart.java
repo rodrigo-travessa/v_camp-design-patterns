@@ -29,14 +29,15 @@ public class Cart  {
 	}
 	
 	
-	public void removeItems(int sku, int quantity) throws Exception {
+	public boolean removeItems(int sku, int quantity) throws Exception {
 		
 		if (getProductData(sku).CartQuantity >= quantity) {
 			StoreInventory.addProductsToStock(sku, quantity);
 			getProductData(sku).CartQuantity -= quantity;
+			return true;
 		}	else {
-			
-			throw new Exception("There isn't enough items in the cart");
+			System.out.println("You tried to remove "+ quantity+" items but the cart only has "+ getProductData(sku).CartQuantity );
+			return false;
 		}
 			
 	}
