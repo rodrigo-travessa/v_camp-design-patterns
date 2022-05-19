@@ -33,6 +33,7 @@ public class Cart  {
 		
 		if (getProductData(sku).CartQuantity >= quantity) {
 			StoreInventory.addProductsToStock(sku, quantity);
+			getProductData(sku).CartQuantity -= quantity;
 		}	else {
 			
 			throw new Exception("There isn't enough items in the cart");
@@ -43,13 +44,13 @@ public class Cart  {
 	
 	public double getWeight() {
 		TotalWeight = 0;
-		ProductsInCart.forEach(productInCart -> TotalWeight += (productInCart.getWeight() * productInCart.StockQuantity));
+		ProductsInCart.forEach(productInCart -> TotalWeight += (productInCart.getWeight() * productInCart.CartQuantity));
 		return TotalWeight;
 	}
 	
 	public double getPrice() {
 		TotalPrice = 0;
-		ProductsInCart.forEach(productInCart -> TotalPrice += (productInCart.getPrice() * productInCart.StockQuantity));
+		ProductsInCart.forEach(productInCart -> TotalPrice += (productInCart.getPrice() * productInCart.CartQuantity));
 		return TotalPrice;		
 	}
 
@@ -57,10 +58,19 @@ public class Cart  {
 		
 		return ProductsInCart ;
 	}
+	
+	public int getHowManyProductsInCart() {
+		int currentCount = 0;
+		for (Products prod : ProductsInCart) {
+			currentCount += prod.CartQuantity;
+		}
+		return currentCount;
+	}
 
 	public Products getProductData(int sku) {
 		return ProductsInCart.stream().filter(prod -> prod.SKU == sku).toList().get(0);
 	}
+	
 
 	
 

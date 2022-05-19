@@ -7,10 +7,11 @@ import builders.BoatBuilder;
 import builders.BookBuilder;
 import builders.MonitorBuilder;
 import builders.ShirtBuilder;
+import entities.BackOffice;
 import entities.Catalog;
 import entities.Order;
+import entities.OrderList;
 import entities.ProductInventory;
-import enums.OrderStatus;
 import products.Boat;
 import products.Book;
 import products.Monitor;
@@ -18,7 +19,7 @@ import products.Shirt;
 
 public class Client {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		BoatBuilder boatBuilder = new BoatBuilder();
 		boatBuilder.setSKU(1).setPrice(10000).setWeight(1000);
@@ -56,12 +57,24 @@ public class Client {
 			System.out.println(prod.toString());
 		}
 		
+		BackOffice backOffice = new BackOffice();
+		OrderList.getInstance().subscribe(backOffice);
 		
 		Order order = new Order();
 		
-		order.orderStatus = OrderStatus.Paid;
+		order.cart.addItems(1, 4);
+		order.cart.removeItems(1, 2);
+		order.cart.addItems(3, 4);
+		order.updateShipping();
+		System.out.println(order.shippingPrice +" "+ order.totalPrice + order.shipping.description());
 		
+		order.toPaid();
 		
+		order.toShipped();
+		
+		order.toCompleted();
+		
+		System.out.println("End");
 		
 		
 		
