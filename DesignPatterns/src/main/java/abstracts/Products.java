@@ -5,9 +5,8 @@ public abstract class Products {
 	public int SKU;
 	public double Price;
 	public double Weight;
-	public int StockQuantity;
+	public int StockQuantity; 
 	public int ReservedQuantity;
-	public int CartQuantity = 0;
 	
 	public Products() {}
 	
@@ -19,6 +18,10 @@ public abstract class Products {
 		this.StockQuantity = stockQuantity;
 		this.ReservedQuantity = reservedQuantity;
 	}
+	
+	/*
+	 * Rompendo principio de responsabilidade unica, o carrinho não deveria ter dados sobre estoque ou carrinho
+	 */
 	
 	public int getSKU() {
 		return SKU;

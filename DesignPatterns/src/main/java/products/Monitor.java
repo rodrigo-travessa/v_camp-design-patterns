@@ -22,7 +22,8 @@ public class Monitor extends Products {
 	}
 	public String toString() {
 
-		return		"Monitor:"  +" Size:" + this.getSizeInInches() +"\""
+		return		"Monitor:"  +"SKU: " +this.getSKU()
+								+" Size:" + this.getSizeInInches() +"\""
 								+", Resolution:" + this.getScreenResolution()
 								+", Price:"+ Double.toString(this.getPrice())
 								+", Weight:"+Double.toString(this.getWeight()) +"KGs;"

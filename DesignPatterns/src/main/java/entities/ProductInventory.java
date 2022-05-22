@@ -41,21 +41,8 @@ public class ProductInventory {
 		
 	}
 
-	public boolean removeProductFromStock(int sku, int quantity) throws Exception {
-
-		if (getProduct(sku).StockQuantity >= quantity) {
-			
+	public void removeProductFromStock(int sku, int quantity) {
 			getProduct(sku).StockQuantity -= quantity;	
-			return true;
-		} else {
-			System.out.println("You tried to withdraw "
-					+ quantity
-					+ " of this product from stock, but we only have "
-					+ getProductQuantityBySKU(sku)
-					+ " of them.");
-			return false;
-		}
-
 	}
 
 
@@ -65,19 +52,17 @@ public class ProductInventory {
 
 	}
 
-	public void removeProductFromReserve(int sku, int quantity) throws Exception {
-
-		if (getProduct(sku).ReservedQuantity >= quantity) {
-			
+	public void removeProductFromReserve(int sku, int quantity)  {
 			getProduct(sku).ReservedQuantity -= quantity ;
-
-		} else {
-			
-			throw new Exception("Not enought of this product in reserve");
-			
-		}
-
 	}
-
+	
+	public boolean checkIfSkuExists(int sku) {
+		return Inventory.stream().filter(x -> x.SKU == sku).count() > 0;
+	}
+	
+	public boolean verifyEnoughStock(int sku, int quantity) {
+		return getProductQuantityBySKU(sku) >= quantity;
+	}
+	
 }
 

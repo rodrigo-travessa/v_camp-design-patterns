@@ -21,7 +21,8 @@ public class Book extends Products {
 	}
 	public String toString() {
 
-		return	"Book:" +" Author:" + this.getAuthor()
+		return	"Book:" +"SKU: " +this.getSKU()
+						+" Author:" + this.getAuthor()
 						+", Pages:" + this.getNumberOfPages()
 						+", Price:"+ Double.toString(this.getPrice())
 						+", Weight:"+Double.toString(this.getWeight()) +"KGs;"

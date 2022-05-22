@@ -18,7 +18,8 @@ public class Boat extends Products {
 	}
 	public String toString() {
 
-		return	"Boat:" +" EnginePower:" + this.getEnginePower() +"HP"
+		return	"Boat:" +"SKU: " +this.getSKU()
+						+" EnginePower:" + this.getEnginePower() +"HP"
 						+", SizeInFeet:" + this.getSizeInFeet()
 						+", Price:"+ Double.toString(this.getPrice())
 						+", Weight:"+Double.toString(this.getWeight()) +"KGs;"

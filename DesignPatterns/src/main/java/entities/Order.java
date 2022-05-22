@@ -1,8 +1,8 @@
 package entities;
 
-import abstracts.Products;
 import enums.OrderStatus;
 import interfaces.IShipping;
+import products.Item;
 
 public class Order {
 	
@@ -26,10 +26,10 @@ public class Order {
 		OrderList.getInstance().renderOrderList(this.OrderID);
 	}
 	
-	public void toPaid() throws Exception {
+	public void toPaid() {
 		this.orderStatus = OrderStatus.Paid;
-		for (Products prod : this.cart.ProductsInCart) {
-			ProductInventory.getInstance().removeProductFromReserve(prod.SKU, prod.CartQuantity);
+		for (Item prod : this.cart.ItemsInCart) {
+			ProductInventory.getInstance().removeProductFromReserve(prod.SKU, prod.quantityInCart);
 		}
 		OrderList.getInstance().renderOrderList(this.OrderID);
 	}
@@ -48,6 +48,5 @@ public class Order {
 		this.orderStatus = OrderStatus.Cancelled;
 		OrderList.getInstance().renderOrderList(this.OrderID);	
 	}
-
 	
 }

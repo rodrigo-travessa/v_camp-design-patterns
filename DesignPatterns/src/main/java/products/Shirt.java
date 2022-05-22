@@ -20,7 +20,8 @@ public class Shirt extends Products {
 
 	public String toString() {
 
-		return	"Shirt:"+" Brand:" + this.getBrand()
+		return	"Shirt:"+"SKU: " +this.getSKU()
+						+" Brand:" + this.getBrand()
 						+", Color:" + this.getColor() 
 						+", Price:"+ Double.toString(this.getPrice())
 						+", Weight:"+Double.toString(this.getWeight()) +"KGs;"
