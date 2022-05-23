@@ -48,13 +48,16 @@ public class Order {
 		
 		this.orderStatus = OrderStatus.Cancelled;
 		OrderList.getInstance().renderOrderList(this.OrderID);
-		if(cart.ItemsInCart.size()>1) {
+		if(cart.ItemsInCart.size()>0) {
 
-			for (Item item : cart.ItemsInCart) {
-				cart.removeItemsAndAdjustInventory(item.SKU, item.quantityInCart);
+			if(cart.ItemsInCart.size()>1) {
+
+				for (Item item : cart.ItemsInCart) {
+					cart.removeItemsAndAdjustInventory(item.SKU, item.quantityInCart);
+				}
+			}else {
+				cart.removeItemsAndAdjustInventory(cart.ItemsInCart.get(0).SKU, cart.ItemsInCart.get(0).SKU);
 			}
-		}else {
-			cart.removeItemsAndAdjustInventory(cart.ItemsInCart.get(0).SKU, cart.ItemsInCart.get(0).SKU);
 		}
 		
 //		if(this.cart.getHowManyProductsInCart() >= 1) {
