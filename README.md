@@ -1,3 +1,26 @@
+# Para execução deste projeto, clone o repositório ou baixe os arquivos, e execute no IDE de sua preferência.
+
+
+
+
+
+![Testagem](https://user-images.githubusercontent.com/90840099/169863570-1ef4d0e3-6882-4dff-a594-ee4a61eee512.png)
+
+
+![Terminal 1](https://user-images.githubusercontent.com/90840099/169863553-eb5d9678-7ec4-4674-adec-0efcd710dd7b.png)
+
+
+![Nao permite adicionar mais do que tem em estoque](https://user-images.githubusercontent.com/90840099/169863587-2f9369e8-373c-405b-923f-776cb91cf02f.png)
+
+
+![Sucessfull sale](https://user-images.githubusercontent.com/90840099/169863594-d4d2d02a-d9d8-4ab4-b954-bfa84926345c.png)
+
+
+
+
+
+
+
 # v_camp-design-patterns
 Este exercício tem o objetivo exercitar a aplicar os conceitos de Design Patterns, SOLID e Teste Unitário em um cenário que todos nós conhecemos, sabemos que alguns dos exemplos abaixo é um exemplo clássico de *_overengineering_* utilizando os padrões, mas com certeza ajudará bastante na consolidação dos conhecimentos.
 
