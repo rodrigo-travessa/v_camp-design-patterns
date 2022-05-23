@@ -45,8 +45,23 @@ public class Order {
 	}
 
 	public void toCancelled() {
+		
 		this.orderStatus = OrderStatus.Cancelled;
-		OrderList.getInstance().renderOrderList(this.OrderID);	
+		OrderList.getInstance().renderOrderList(this.OrderID);
+		if(cart.ItemsInCart.size()>1) {
+
+			for (Item item : cart.ItemsInCart) {
+				cart.removeItemsAndAdjustInventory(item.SKU, item.quantityInCart);
+			}
+		}else {
+			cart.removeItemsAndAdjustInventory(cart.ItemsInCart.get(0).SKU, cart.ItemsInCart.get(0).SKU);
+		}
+		
+//		if(this.cart.getHowManyProductsInCart() >= 1) {
+//			System.out.println("Degub 1");
+//			for (Item item : cart.ItemsInCart) {
+//				this.cart.removeItemsAndAdjustInventory(item.SKU, item.quantityInCart);
+//			}
+//		}
 	}
-	
 }

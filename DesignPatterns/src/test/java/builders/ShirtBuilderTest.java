@@ -23,5 +23,8 @@ public class ShirtBuilderTest {
 		Assert.assertTrue(shirt.getReservedQuantity() == 0);
 		Assert.assertTrue(shirt.getBrand() == "Lacoste");
 		Assert.assertTrue(shirt.getColor() == "Red");
+		Assert.assertTrue(shirt == shirtBuilder.getProduct());
 	}
+	
+	
 }

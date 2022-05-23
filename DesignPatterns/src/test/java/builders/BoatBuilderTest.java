@@ -25,6 +25,8 @@ public class BoatBuilderTest {
 		Assert.assertTrue(boat.getReservedQuantity() == 0);
 		Assert.assertTrue(boat.getEnginePower() == 150);
 		Assert.assertTrue(boat.getSizeInFeet() == 30);
+		Assert.assertTrue(boat == boatBuilder.getProduct());
+
 		
 	}
 	

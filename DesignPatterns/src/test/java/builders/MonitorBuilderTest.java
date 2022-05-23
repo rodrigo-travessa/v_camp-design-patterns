@@ -23,5 +23,7 @@ public class MonitorBuilderTest {
 		Assert.assertTrue(monitor.getReservedQuantity() == 0);
 		Assert.assertTrue(monitor.getScreenResolution() == "Full HD");
 		Assert.assertTrue(monitor.getSizeInInches() == 30);
+		Assert.assertTrue(monitor == monitorBuilder.getProduct());
+
 	}
 }

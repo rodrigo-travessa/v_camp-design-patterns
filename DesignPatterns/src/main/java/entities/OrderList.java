@@ -20,17 +20,25 @@ public class OrderList {
 	
 	List<Order> ListOfOrders = new ArrayList<Order>();
 	
+	public int getCurrentCounter() {
+		return current;
+	}
+	
+	public void incrementCurrentCounter() {
+		current += 1;
+	}
 	
 	public Order getCurrent() {
-		return ListOfOrders.get(current);
+		return ListOfOrders.get(current-1);
 	}
+	
 	
 	public boolean hasNext() {
 		return ListOfOrders.size() > current;
 	}
 	
 	public void reset() {
-		current = 0;
+		current = 1;
 	}
 	
 	public void renderOrderList(int orderID) {

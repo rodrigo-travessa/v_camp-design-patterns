@@ -3,6 +3,7 @@ package entities;
 import java.util.Collections;
 
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import builders.BoatBuilder;
@@ -10,6 +11,12 @@ import enums.OrderStatus;
 import products.Boat;
 
 public class OrderTest {
+	
+	@BeforeClass	
+	public static void resetSetup() {
+		ProductInventory.getInstance().Inventory.removeAll(ProductInventory.getInstance().Inventory);
+		OrderList.getInstance().ListOfOrders.removeAll(OrderList.getInstance().ListOfOrders);
+	}
 	
 
 	
@@ -62,19 +69,28 @@ public class OrderTest {
 		boatBuilder.setEnginePower(150).setSizeinFeet(30);
 		Boat boat = boatBuilder.build();
 		
+		BoatBuilder boatBuilder2 = boatBuilder.setSKU(3);
+		Boat boat2 = boatBuilder2.build();
+		
 		Collections.addAll(ProductInventory.getInstance().Inventory, boat);
 		
 		Order order = new Order();
-		order.cart.verifyQuantityAndAddItems(2, 10);
+		order.cart.verifyQuantityAndAddItems(2, 5);
 		
-		order.toPaid();
-		Assert.assertTrue(order.orderStatus == OrderStatus.Paid);
 		order.toShipped();
 		Assert.assertTrue(order.orderStatus == OrderStatus.Shipped);
 		order.toCompleted();
 		Assert.assertTrue(order.orderStatus == OrderStatus.Completed);
+		order.toPaid();
+		Assert.assertTrue(order.orderStatus == OrderStatus.Paid);
 		order.toCancelled();
 		Assert.assertTrue(order.orderStatus == OrderStatus.Cancelled);
+		
+		order.cart.verifyQuantityAndAddItems(2, 3);
+		order.cart.verifyQuantityAndAddItems(3, 3);
+		
+		order.toCompleted();
+		order.toCancelled();
 	}
 	
 

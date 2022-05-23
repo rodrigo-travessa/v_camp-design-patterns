@@ -23,5 +23,7 @@ public class BookBuilderTest {
 		Assert.assertTrue(book.getReservedQuantity() == 0);
 		Assert.assertTrue(book.getAuthor() == "Teste");
 		Assert.assertTrue(book.getNumberOfPages() == 600);
+		Assert.assertTrue(book == bookBuilder.getProduct());
+
 	}
 }
